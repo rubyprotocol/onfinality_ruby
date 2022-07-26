@@ -1,0 +1,5 @@
+{
+  "APP_NAME": "substrate-client",
+  "DEVELOPMENT_KEYRING": true,
+  "RPC": {}
+}

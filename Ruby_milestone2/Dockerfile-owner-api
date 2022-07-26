@@ -1,0 +1,8 @@
+FROM rust:1.60.0
+LABEL MAINTAINER="miles.huang@muadao.build"
+
+COPY . /app
+WORKDIR /app
+EXPOSE 3035
+RUN cd ruby-api && cargo build --release
+CMD ["./ruby-api/target/release/owner-api"]

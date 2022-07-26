@@ -1,0 +1,11 @@
+FROM rust:1.60.0
+LABEL MAINTAINER="miles.huang@muadao.build"
+
+RUN apt-get update -qq && \
+ apt-get install -y build-essential
+ 
+COPY . /app
+WORKDIR /app
+EXPOSE 3030
+RUN cd ruby-api && cargo build --release
+CMD ["./ruby-api/target/release/authority-api"]

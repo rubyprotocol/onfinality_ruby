@@ -1,0 +1,8 @@
+FROM node:16.14.0 AS builder
+LABEL MAINTAINER="miles.huang@muadao.io"
+COPY . /app
+WORKDIR /app/ruby-ui
+RUN npm install
+
+EXPOSE 3000
+ENTRYPOINT ["/app/ruby-ui/bin/docker-entrypoint"]

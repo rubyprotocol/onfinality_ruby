@@ -1,0 +1,34 @@
+specVersion: 1.0.0
+name: rubyio
+version: 0.0.4
+runner:
+  node:
+    name: '@subql/node'
+    version: '*'
+  query:
+    name: '@subql/query'
+    version: '*'
+description: Ruby protocol is a private data management framework for Web 3.0.
+repository: 'https://github.com/subquery/kusama-subql-starters'
+schema:
+  file: ./schema.graphql
+network:
+  chainId: '0x0ab2072ea50804182388dffd2eb77505dd6b2ac3b5df15953a275751acb33d0d'
+  endpoint: >-
+    wss://node-6956174729479622656.lh.onfinality.io/ws?apikey=34a25d6c-b965-4e9f-af3c-83ff4e960353
+  dictionary: 'https://api.subquery.network/sq/subquery/kusama-dictionary'
+dataSources:
+  - kind: substrate/Runtime
+    startBlock: 1
+    mapping:
+      file: ./dist/index.js
+      handlers:
+        - handler: handleBlock
+          kind: substrate/BlockHandler
+        - handler: handleEvent
+          kind: substrate/EventHandler
+          filter:
+            module: balances
+            method: Deposit
+        - handler: handleCall
+          kind: substrate/CallHandler
