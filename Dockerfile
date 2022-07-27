@@ -16,6 +16,7 @@ FROM rust:1.60.0
 WORKDIR /app
 EXPOSE 3030 3031 3035 9944 3000
 COPY ./entrypoint.sh ./
+COPY ./rubyio-raw.json ./
 COPY --from=builder-api /app/ruby-api/target/release/*-api ./
 COPY --from=builder-substrate /app/zk-substrate-devnet/target/release/zeropool-substrate-node ./
 RUN chmod +x ./entrypoint.sh
