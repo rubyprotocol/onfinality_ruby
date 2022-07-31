@@ -8,4 +8,4 @@ nohup ./purchaser-api > purchaser-api.log 2>&1 &
 
 echo $*
 # start zeropool alice node
-./zeropool-substrate-node --alice --tmp $*
+./zeropool-substrate-node --alice $*
