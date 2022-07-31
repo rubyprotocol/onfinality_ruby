@@ -16,5 +16,5 @@ run:
 
 .PHONY: build
 build:
-	cargo +nightly-2020-10-05 build  --release 
+	cargo build  --release 
 

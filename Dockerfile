@@ -7,10 +7,10 @@ RUN cd /app/ruby-api && cargo build --release
 
 FROM rust:1.60.0 as builder-substrate
 RUN apt-get update -qq && \
- apt-get install -y build-essential git curl make clang pkg-config libssl-dev && \
+ apt-get install -y build-essential git curl make cmake clang pkg-config libssl-dev && \
  rm -rf /var/lib/apt/lists/*
 COPY ./zeropool_substrate/zk-substrate-devnet /app/zk-substrate-devnet
-RUN cd /app/zk-substrate-devnet && make init && cargo +nightly-2020-10-05 build --release
+RUN cd /app/zk-substrate-devnet && make init && cargo build --release
 
 FROM rust:1.60.0
 WORKDIR /app

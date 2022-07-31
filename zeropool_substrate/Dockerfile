@@ -7,5 +7,5 @@ RUN apt-get update -qq && \
 COPY . /app
 WORKDIR /app/zk-substrate-devnet
 EXPOSE 9944
-RUN make init && cargo +nightly-2020-10-05 build --release 
+RUN make init && cargo build --release 
 CMD make run
